@@ -13,4 +13,7 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { useRegisterUserMutation } from "./apis/userApi";
+export {
+  useRegisterUserMutation,
+  useGetCurrentUserQuery,
+} from "./apis/userApi";

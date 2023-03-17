@@ -1,9 +1,9 @@
-import LoginForm from "@/components/RegisterForm";
+import RegisterForm from "@/components/RegisterForm";
 
 export default function Login() {
   return (
     <main>
-      <LoginForm />
+      <RegisterForm />
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRegisterUserMutation } from "@/store";
+import useLogin from "@/hooks/useLogin";
 
 function RegisterForm() {
   const [email, setEmail] = useState("");
@@ -13,11 +14,18 @@ function RegisterForm() {
     setName(e.target.value);
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
+  const [login, error] = useLogin({ email, password });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // handle form submission logic here
     registerUser({ name, email, password });
+
+    if (email && password) {
+      return login();
+    }
+
+    return alert("Please enter your email and password");
   };
 
   return (

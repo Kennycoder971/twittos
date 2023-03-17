@@ -13,7 +13,6 @@ const userApi = createApi({
     return {
       registerUser: builder.mutation({
         query: ({ email, password, name }: UserType) => {
-          console.log("triggered", name, email, password);
           return {
             url: "/register",
             method: "POST",
@@ -25,16 +24,11 @@ const userApi = createApi({
           };
         },
       }),
-      getUser: builder.mutation({
-        query: ({ email, password }: UserType) => {
-          console.log("triggered", email, password);
+      getCurrentUser: builder.query({
+        query: () => {
           return {
-            url: "/login",
+            url: "/currentUser",
             method: "GET",
-            body: {
-              email,
-              password,
-            },
           };
         },
       }),
@@ -42,5 +36,5 @@ const userApi = createApi({
   },
 });
 
-export const { useRegisterUserMutation } = userApi;
+export const { useRegisterUserMutation, useGetCurrentUserQuery } = userApi;
 export { userApi };
